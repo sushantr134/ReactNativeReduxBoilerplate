@@ -6,16 +6,6 @@ import { testReducer } from "./reducers/testReducer";
 
 const rootReducer = combineReducers({ test: testReducer });
 
-const Store = initialState =>
-  createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(
-      compose(
-        thunk,
-        logger
-      )
-    )
-  );
+const Store = initialState => createStore(rootReducer, initialState, compose(applyMiddleware(thunk, logger)));
 
 export default Store;
